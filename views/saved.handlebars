@@ -1,0 +1,26 @@
+<div class="jumbotron jumbotron-fluid" style="background-color:rgb(204, 58, 58)">
+    <div class="container text-center">
+        <h1><strong>Saved Articles</strong></h1>
+         <hr class="my-4">
+        <a href="/"><button type="button" class="btn btn-warning">Back to Home</button></a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div id="articles" style="padding-right:3%; padding-left:3%">
+            {{#each saved}}
+            <button data-id={{this._id}} class="btn btn-warning delete-article"
+                style="padding: 3px 6px; float:right;">Delete from
+                Saved</button>
+            <button data-id={{this._id}} class="btn btn-warning note-comment"
+                style="padding: 3px 6px; float:right; margin-right:.5%">Article Notes</button>
+            <h4><strong>{{this.title}}</strong></h4>
+            <a href="{{this.link}}">{{this.link}}</a>
+            {{#if this.excerpt}}
+            <h5>{{this.excerpt}}</h5>
+            {{/if}}
+            <hr>
+            {{/each}}
+        </div>
+    </div>
+</div>
