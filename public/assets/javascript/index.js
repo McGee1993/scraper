@@ -37,7 +37,7 @@ $(document).on("click", "#scrape-button", function() {
     })
   });
   
-  //Go to the notes page for a particular article
+  //Go to the notes page
   $(document).on("click", ".note-comment", function() {
     var thisId = $(this).attr("data-id");
     $.ajax({

@@ -4,7 +4,7 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var exphbs = require("express-handlebars");
 
-// Our scraping tools
+// scraping tools
 var request = require("request");
 var cheerio = require("cheerio");
 
@@ -17,8 +17,6 @@ var PORT =  process.env.PORT || 3000;
 var app = express();
 
 // Configure middleware
-
-// Use morgan logger for logging requests
 app.use(logger("dev"));
 // Use body-parser for handling form submissions
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -40,7 +38,6 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines
 mongoose.connect(MONGODB_URI);
 
 
-// Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
@@ -66,7 +63,6 @@ app.get("/scrape", function(req, res) {
     if (!error && response.statusCode == 200) {
         // console.log(html);
       }
-    // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(html, {
       xml: {
         normalizeWhitespace: true,
@@ -183,7 +179,6 @@ app.post("/articles/:id", function(req, res) {
     })
 });
 
-// Start the server
 app.listen(PORT, function() {
   console.log("App running on port " + PORT + "!");
 });
